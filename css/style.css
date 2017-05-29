@@ -1,0 +1,98 @@
+.hide{
+  display: none;
+}
+#weather{
+  display: block;
+}
+svg{
+  width: 500px;
+  margin: 0 auto;
+  display: block
+    ;
+}
+#cloud.dark{
+  fill: #333;
+}
+#text{
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+}
+#Drop_3_{
+  transition: 1s ease;
+}
+.spark{
+  -webkit-animation: spark 2s linear infinite;
+  animation: spark 2s linear infinite;
+}
+/* path[id^=Spark]{
+  display: none;
+} 
+path[id^=Drop]{
+  display: none;
+} */
+.spark-1{
+  animation-delay: .6s;
+}
+.spark-2{
+  animation-delay: 1.4s;
+}
+.rain{
+  opacity: 0;
+  -webkit-animation: rain 1s linear infinite; 
+  transform-origin: 180px 190px;
+}
+.rain-1{
+  animation-delay: .65s;
+}
+.rain-2{
+  animation-delay: .8s;
+}
+.rain-3{
+  animation-delay: .5s;
+}
+.rain-4{
+  animation-delay: .29s;
+}
+.rain-5{
+  animation-delay: 1.17s;
+}
+@-webkit-keyframes rain {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15%{
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(250%);
+  }
+}
+@-webkit-keyframes spark {
+  0% {
+    opacity: 0;
+  }
+  14%{
+    opacity: 0;
+  }
+  18%{
+    opacity: 1;
+  }
+  22%{
+    opacity: 0;
+  }
+ 
+  74%{
+    opacity: 0;
+  }
+  65% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
