@@ -1,6 +1,7 @@
+const suffix = '?client_id=CLIENTID&client_secret=CLIENTSECRET'
 $(function(){
   $.ajax({
-	  url : "http://api.aerisapi.com/observations/70816?client_id=CLIENTID&client_secret=CLIENTSECRET",
+	  url : `http://api.aerisapi.com/observations/70816${suffix}`,
 	  dataType : "jsonp",
 	  success : function(parsed_json) {
       // console.log(parsed_json);
@@ -36,7 +37,7 @@ $(function(){
   });
 });
 
-const sunmoon = 'http://api.aerisapi.com/sunmoon/70816?client_id=AMPdX2M3lA8yrTcPuW78c&client_secret=bvfG6TyVlv7odrhIcgWMbiVdC0UPU9orVEZiGJLW';
+const sunmoon = `http://api.aerisapi.com/sunmoon/70816${suffix}`;
 const moon = document.getElementById('moon');
 
 $.getJSON(sunmoon, ( res => {
