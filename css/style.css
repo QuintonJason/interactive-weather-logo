@@ -10,8 +10,24 @@ svg{
   display: block
     ;
 }
+#dot{
+  transform: scale(1, 1);
+  transform-origin: center center;
+  transition: transform .25s ease;
+}
+#dot:hover{
+  fill: red;
+  cursor: pointer;
+  transform: scale(1.5, 1.5);
+}
 #cloud.dark{
   fill: #333;
+}
+.weather-wrapper{
+  display: none;
+}
+.weather-wrapper.on{
+  display: block;
 }
 #text{
   -webkit-transform: translateY(10px);
