@@ -1,4 +1,8 @@
+
+
+/***************WEATHER INFO**************/
 const suffix = '?client_id=CLIENTID&client_secret=CLIENTSECRET'// let loc = '70816'
+const gapiKey = 'GOOGLEMAPSAPIKEY';
 const weatherSubmit = document.getElementById('weather-submit');
 
 let weatherLocation = '70816';
@@ -9,7 +13,10 @@ weatherSubmit.addEventListener('click', () => {
   if (weatherInput != '') {
     weatherLocation = weatherInput;
   }
+  const mapCanvas = document.getElementById('map-canvas');
+  mapCanvas.innerHTML = '';
   getWeatherInfo(weatherLocation);
+  getRadarInfo(weatherLocation);
   weatherInput.value = '';
 
 });
@@ -126,6 +133,61 @@ const weatherInfoTrigger = document.getElementById('dot');
 const weatherInfoTarget = document.querySelector('.weather-wrapper');
 
 dot.addEventListener('click', () => {
-  console.log('clicked');
   weatherInfoTarget.classList.toggle('on');
 });
+
+/***************LOCATION RADAR**************/
+var getRadarInfo = (loc) => {
+  console.log('loc', loc);
+  if(loc){
+    var address = loc;  
+  } else {
+    var address = 70816;
+  }
+  var latLongFetch = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + weatherLocation + '&key=' + gapiKey;
+  var lat = '';
+  var lng = '';
+
+  $.getJSON(latLongFetch, function(res){
+    lat = res.results[0].geometry.location.lat;
+    lng = res.results[0].geometry.location.lng;
+
+    var aerisMapBuilder = new aeris.interactive.MapAppBuilder({
+        apiId: 'AMPdX2M3lA8yrTcPuW78c',
+        apiSecret: 'bvfG6TyVlv7odrhIcgWMbiVdC0UPU9orVEZiGJLW',
+        el: '#map-canvas',
+        modules: {
+            map: {
+                zoom: 5,
+                center: [lat,lng],
+                scrollZoom: true
+            },
+            geosearch: {
+                geolocate: false
+            },
+            localWeather: {
+                showOnInit: false
+            },
+            mapControls: {
+                expandOnInit: false
+            },
+            animation: {
+              speed: 100,
+              futureSpeed: 200,
+              from: new Date(Date.now() - 3600 * 1 * 1000),
+              to: new Date(Date.now() + 3600 * 2* 1000),
+              useBigTimeline: false
+            }
+        }
+    });
+    aerisMapBuilder.start(); 
+    setTimeout(function(){
+      var aerisBtn = document.querySelector('.aeris-icon-play');
+      aerisBtn.click(); 
+    }, 2000);
+  });
+};
+
+getRadarInfo();
+
+

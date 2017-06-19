@@ -23,12 +23,48 @@ svg{
 #cloud.dark{
   fill: #333;
 }
+
+
+#map-canvas{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  // display: none;
+}
+
 .weather-wrapper{
   display: none;
+  background: rgba(0,0,0,.6);
+  max-width: 300px;
+  padding: 1em;
+  width: 100%;
+  position: relative;
 }
 .weather-wrapper.on{
   display: block;
 }
+.weather-form{
+  
+}
+.weather-form label,
+.weather-form input[type="text"]{
+  display: block;
+  margin-bottom: .5rem;
+}
+.weather-form label{
+  color: white;
+}
+.weather-form input[type="text"]{
+  
+}
+
+
+
+/*HELPERS*/
+.white{ color: white; }
+.caps{ text-transform: capitalize; }
+/*END HELPERS*/
 #text{
   -webkit-transform: translateY(10px);
   transform: translateY(10px);
