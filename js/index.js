@@ -1,8 +1,8 @@
 
 
 /***************WEATHER INFO**************/
-const suffix = '?client_id=CLIENTID&client_secret=CLIENTSECRET'// let loc = '70816'
-const gapiKey = 'GOOGLEMAPSAPIKEY';
+const suffix = '?client_id=' + keys.client_id + '&client_secret=' + keys.client_secret +''// let loc = '70816'
+const gapiKey = keys.gapiKey;
 const weatherSubmit = document.getElementById('weather-submit');
 
 let weatherLocation = '70816';
@@ -153,8 +153,8 @@ var getRadarInfo = (loc) => {
     lng = res.results[0].geometry.location.lng;
 
     var aerisMapBuilder = new aeris.interactive.MapAppBuilder({
-        apiId: 'AMPdX2M3lA8yrTcPuW78c',
-        apiSecret: 'bvfG6TyVlv7odrhIcgWMbiVdC0UPU9orVEZiGJLW',
+        apiId: keys.apiId,
+        apiSecret: keys.apiSecret,
         el: '#map-canvas',
         modules: {
             map: {
